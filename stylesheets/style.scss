@@ -1,0 +1,71 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #222;
+  background-color: #eee;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 1rem;
+  height: 3rem;
+  background: hsl(0, 100%, 29%);
+  color: #fff;
+  h1 {
+    text-shadow: 1px 1px #000;
+    font-size: 2rem;
+  }
+}
+
+main {
+  margin-top: 3rem;
+  padding: 1rem 0;
+}
+
+.image_container {
+  padding: .5rem 0;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
+  text-align: center;
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+  }
+  img {
+    max-width: 100%;
+    margin-bottom: .5rem;
+  }
+  p {
+    font-size: .8rem;
+    color: #555;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+@media screen and (min-width: 500px) {
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .image_container {
+    width: 45%;
+    border-bottom: none;
+  }
+}

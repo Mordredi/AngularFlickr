@@ -3,16 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Angular Flickr</title>
+  <link rel="stylesheet" href="./stylesheets/reset.css">
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body ng-controller="AfMainController">
-  <main>
-    <h1>Hello World!</h1>
-    <div ng-repeat="photo in photos">
-      <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt="">
-      <p>{{photo.timeInMS | date: "medium"}}</p>
+  <header>
+    <h1>AngularFlickr</h1>
+    <div class="filters">
+      <button ng-click="reverse=!reverse;order('timeInMS', reverse)">Order By Date</button>
+      <button ng-click="reverse=!reverse;order('title._content', reverse)">Order By Title</button>
     </div>
-
-    <button ng-click="reverse=!reverse;order('timeInMS', reverse)">Order By Date</button>
+  </header>
+  <main ng-cloak>
+    <div class="images">
+      <div ng-repeat="photo in photos" class="image_container">
+        <h2>{{photo.title._content}}</h2>
+        <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt="">
+        <p>Photo taken: {{photo.timeInMS | date: "medium"}}</p>
+      </div>
+    </div>
   </main>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
