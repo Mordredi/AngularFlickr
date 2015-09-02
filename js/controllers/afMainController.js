@@ -7,7 +7,9 @@ angular.module('AngularFlickr').controller('AfMainController', function(FlickrAP
     for (var i = 0; i < photos.length; i++) {
       var photo = photos[i];
       FlickrAPI.photoData(photo.id, photo.secret).then(function(data){
-        data.timeInMS = Date.parse(data.dates.taken);
+        var dateTaken = data.dates.taken;
+        dateTaken = dateTaken.replace(/ /g, 'T');
+        data.timeInMS = Date.parse(dateTaken);
         $scope.photos.push(data);
       },
       function(error){
