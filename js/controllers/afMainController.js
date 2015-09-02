@@ -9,8 +9,14 @@ angular.module('AngularFlickr').controller('AfMainController', function(FlickrAP
       FlickrAPI.photoData(photo.id, photo.secret).then(function(data){
         data.timeInMS = Date.parse(data.dates.taken);
         $scope.photos.push(data);
+      },
+      function(error){
+        $scope.error = "Error receving photo data";
       });
     }
+  },
+  function(error){
+    $scope.error = "Error receving photos";
   });
   $scope.order = function(predicate, reverse) {
     $scope.photos = orderBy($scope.photos, predicate, reverse);

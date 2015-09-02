@@ -16,6 +16,7 @@
     </div>
   </header>
   <main ng-cloak>
+    <p ng-show="error">{{error}}</p>
     <div class="images">
       <div ng-repeat="photo in photos" class="image_container">
         <h2>{{photo.title._content}}</h2>
